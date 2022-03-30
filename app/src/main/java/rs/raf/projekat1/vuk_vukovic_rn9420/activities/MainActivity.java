@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
         finish();
 
         if (checkLogin()){
-            //TODO
+            Intent jiraActivity = new Intent(this, JiraActivity.class);
+            startActivity(jiraActivity);
         }
         else {
             Intent loginIntent = new Intent(this, LoginActivity.class);
