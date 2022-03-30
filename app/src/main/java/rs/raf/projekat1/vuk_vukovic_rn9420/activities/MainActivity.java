@@ -8,10 +8,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
+import rs.raf.projekat1.vuk_vukovic_rn9420.data.LoginData;
 
 public class MainActivity extends AppCompatActivity {
-
-    public static final String PREF_LOGIN_INFO = "loginInfo";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean checkLogin(){
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
-        String username = sharedPreferences.getString(PREF_LOGIN_INFO, "");
+        String username = sharedPreferences.getString(LoginData.PREF_USERNAME, "");
 
         return !username.equals("");
     }

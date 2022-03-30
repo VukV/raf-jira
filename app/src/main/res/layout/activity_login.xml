@@ -17,8 +17,6 @@
         app:layout_constraintVertical_chainStyle="packed"
         android:src="@drawable/ic_login_person" />
 
-
-
     <EditText
         android:id="@+id/usernameEditText"
         android:hint="@string/username"
