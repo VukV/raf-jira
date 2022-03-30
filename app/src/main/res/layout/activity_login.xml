@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/usernameEditText"
         app:layout_constraintVertical_chainStyle="packed"
-        app:srcCompat="@drawable/ic_login" />
+        android:src="@drawable/ic_login_person" />
 
 
 

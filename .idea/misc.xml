@@ -4,6 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/drawable/ic_login.xml" value="0.308" />
+        <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/drawable/ic_login_person.xml" value="0.2335" />
+        <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/drawable/ic_splash.xml" value="0.136" />
+        <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/drawable/ic_splash_screen.xml" value="0.2335" />
+        <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/layout/activity_login.xml" value="0.19067028985507245" />
         <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/layout/activity_login2.xml" value="0.3046875" />
         <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/layout/activity_main.xml" value="0.1" />
       </map>
