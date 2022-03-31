@@ -1,6 +1,7 @@
 package rs.raf.projekat1.vuk_vukovic_rn9420.view.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.splashscreen.SplashScreen;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,10 +23,12 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
-        initView();
-        initListeners();
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+        splashScreen.setKeepOnScreenCondition(() -> {
+            start();
+            return false;
+        });
     }
 
     private void initView(){
@@ -37,14 +40,14 @@ public class LoginActivity extends AppCompatActivity {
 
     private void initListeners(){
         loginButton.setOnClickListener(click -> {
-            if(checkLogin()){
+            if(checkLoginInfo()){
                 loginToSharedPreferences();
                 startJiraActivity();
             }
         });
     }
 
-    private boolean checkLogin(){
+    private boolean checkLoginInfo(){
         return checkUsername() && checkEmail() && checkPassword();
     }
 
@@ -106,5 +109,27 @@ public class LoginActivity extends AppCompatActivity {
         finish();
         Intent jiraIntent = new Intent(this, JiraActivity.class);
         startActivity(jiraIntent);
+    }
+
+    private void start(){
+        if (checkLogin()){
+            finish();
+
+            Intent jiraActivity = new Intent(this, JiraActivity.class);
+            startActivity(jiraActivity);
+        }
+        else {
+            setContentView(R.layout.activity_login);
+
+            initView();
+            initListeners();
+        }
+    }
+
+    private boolean checkLogin(){
+        SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        String username = sharedPreferences.getString(LoginData.PREF_USERNAME, "");
+
+        return !username.equals("");
     }
 }

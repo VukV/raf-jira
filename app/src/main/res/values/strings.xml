@@ -10,4 +10,7 @@
     <string name="new_menu">New</string>
     <string name="tickets_menu">Tickets</string>
     <string name="profile_menu">Profile</string>
+
+    <string name="logout">Logout</string>
+    <string name="unavailable">Unavailable</string>
 </resources>

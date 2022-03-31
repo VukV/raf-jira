@@ -16,6 +16,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
     public static final int FRAGMENT_STATISTICS = 0;
     public static final int FRAGMENT_NEW = 1;
     public static final int FRAGMENT_TICKETS = 2;
+    public static final int FRAGMENT_PROFILE = 3;
 
     public MainPagerAdapter(@NonNull FragmentManager fm) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
