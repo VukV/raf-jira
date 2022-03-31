@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vuk_vukovic_rn9420">
         <activity
-            android:name=".activities.JiraActivity"
+            android:name=".view.activities.JiraActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".view.activities.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".view.activities.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Splash">
             <intent-filter>

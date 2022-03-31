@@ -1,8 +1,9 @@
-package rs.raf.projekat1.vuk_vukovic_rn9420.activities;
+package rs.raf.projekat1.vuk_vukovic_rn9420.view.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -93,7 +94,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginToSharedPreferences(){
-        //TODO write to pref
+        SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        sharedPreferences
+                .edit()
+                .putString(LoginData.PREF_USERNAME, usernameEditText.getText().toString())
+                .putString(LoginData.PREF_EMAIL, emailEditText.getText().toString())
+                .apply();
     }
 
     private void startJiraActivity(){
