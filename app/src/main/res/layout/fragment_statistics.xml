@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/jiraTitle"
+        style="@style/TitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/statistics_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="40dp">
+    </TextView>
+
+
+    <GridLayout
+        android:id="@+id/statsGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:columnCount="2"
+        android:rowCount="9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jiraTitle"
+        android:useDefaultMargins="true"
+        android:layout_marginTop="40dp">
+
+        <!-- to-do -->
+        <TextView
+            android:text="@string/todo"
+            style="@style/RedTitleStyle">
+        </TextView>
+        <TextView
+            android:id="@+id/todoTotal"
+            android:textSize="18sp">
+        </TextView>
+
+        <TextView
+            android:text="@string/enhancements"
+            android:textSize="18sp">
+        </TextView>
+        <TextView
+            android:id="@+id/todoEnhancements"
+            android:textSize="18sp">
+        </TextView>
+
+        <TextView
+            android:text="@string/bugs"
+            android:textSize="18sp">
+        </TextView>
+        <TextView
+            android:id="@+id/todoBugs"
+            android:textSize="18sp">
+        </TextView>
+
+        <!-- in progress -->
+        <TextView
+            android:text="@string/in_progress"
+            style="@style/YellowTitleStyle">
+        </TextView>
+        <TextView
+            android:id="@+id/inProgressTotal"
+            android:textSize="18sp">
+        </TextView>
+
+        <TextView
+            android:text="@string/enhancements"
+            android:textSize="18sp">
+        </TextView>
+        <TextView
+            android:id="@+id/inProgressEnhancements"
+            android:textSize="18sp">
+        </TextView>
+
+        <TextView
+            android:text="@string/bugs"
+            android:textSize="18sp">
+        </TextView>
+        <TextView
+            android:id="@+id/inProgressBugs"
+            android:textSize="18sp">
+        </TextView>
+
+        <!-- done -->
+        <TextView
+            android:text="@string/in_progress"
+            style="@style/GreenTitleStyle">
+        </TextView>
+        <TextView
+            android:id="@+id/doneTotal"
+            android:textSize="18sp">
+        </TextView>
+
+        <TextView
+            android:text="@string/enhancements"
+            android:textSize="18sp">
+        </TextView>
+        <TextView
+            android:id="@+id/doneEnhancements"
+            android:textSize="18sp">
+        </TextView>
+
+        <TextView
+            android:text="@string/bugs"
+            android:textSize="18sp">
+        </TextView>
+        <TextView
+            android:id="@+id/doneBugs"
+            android:textSize="18sp">
+        </TextView>
+
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,4 +13,11 @@
 
     <string name="logout">Logout</string>
     <string name="unavailable">Unavailable</string>
+
+    <string name="statistics_title">RAF Jira Statistics</string>
+    <string name="enhancements">Enhancements</string>
+    <string name="bugs">Bugs</string>
+    <string name="todo">ToDo</string>
+    <string name="in_progress">In Progress</string>
+    <string name="done">Done</string>
 </resources>
