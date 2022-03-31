@@ -1,35 +1,40 @@
-package rs.raf.projekat1.vuk_vukovic_rn9420.view.activities;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
+package rs.raf.projekat1.vuk_vukovic_rn9420.view.fragments;
 
 import android.os.Bundle;
+import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
 import rs.raf.projekat1.vuk_vukovic_rn9420.view.viewpager.MainPagerAdapter;
-import rs.raf.projekat1.vuk_vukovic_rn9420.view.viewpager.MainViewPager;
 
-public class JiraActivity extends AppCompatActivity {
+public class JiraFragment extends Fragment {
 
     private ViewPager viewPager;
     private BottomNavigationView bottomNavigationView;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jira);
+    public JiraFragment() {
+        super(R.layout.fragment_jira);
+    }
 
-        initView();
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        initView(view);
         initNavigation();
     }
 
-    private void initView(){
-        viewPager = findViewById(R.id.mainViewPager);
-        viewPager.setAdapter(new MainPagerAdapter(getSupportFragmentManager()));
+    private void initView(View view){
+        viewPager = view.findViewById(R.id.mainViewPager);
+        viewPager.setAdapter(new MainPagerAdapter(getChildFragmentManager()));
 
-        bottomNavigationView = findViewById(R.id.mainNavigation);
+        bottomNavigationView = view.findViewById(R.id.mainNavigation);
     }
 
     private void initNavigation(){

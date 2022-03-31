@@ -1,6 +1,7 @@
 package rs.raf.projekat1.vuk_vukovic_rn9420.view.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
 import rs.raf.projekat1.vuk_vukovic_rn9420.data.LoginData;
@@ -40,7 +42,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void readPreferenceInfo(){
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(getActivity().getPackageName(), Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(LoginData.PREF, Context.MODE_PRIVATE);
         usernameTextView.setText(sharedPreferences.getString(LoginData.PREF_USERNAME, getString(R.string.unavailable)));
         emailTextView.setText(sharedPreferences.getString(LoginData.PREF_EMAIL, getString(R.string.unavailable)));
     }
@@ -53,10 +55,12 @@ public class ProfileFragment extends Fragment {
     }
 
     private void logoutFromPreferences(){
-
+        getActivity().getSharedPreferences(LoginData.PREF, Context.MODE_PRIVATE).edit().clear().apply();
     }
 
     private void returnToLogin(){
-
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragmentContainerMain, new LoginFragment());
+        transaction.commit();
     }
 }
