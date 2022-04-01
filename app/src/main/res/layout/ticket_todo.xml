@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp">
+
+    <ImageView
+        android:id="@+id/ticketImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/ticketInfoLinearLayout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ticketImageView"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/ticketTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/ticketDescTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ticketButtonsLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ticketInfoLinearLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/moveToProgressButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_move"
+            app:tint="?attr/colorPrimary"
+            android:background="?attr/colorPrimary">
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/deleteTicketButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:tint="?attr/colorPrimary"
+            android:src="@drawable/ic_delete"
+            android:background="?attr/colorPrimary">
+        </ImageButton>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(LoginData.PREF, MODE_PRIVATE);
         String username = sharedPreferences.getString(LoginData.PREF_USERNAME, "");
 
+        if(username.startsWith("admin")){
+            LoginData.IS_ADMIN = true;
+        }
+
         return !username.equals("");
     }
 

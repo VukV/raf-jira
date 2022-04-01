@@ -3,9 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/drawable/ic_bug.xml" value="0.308" />
+        <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/drawable/ic_delete.xml" value="0.308" />
+        <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/drawable/ic_enhancement.xml" value="0.308" />
         <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/drawable/ic_login.xml" value="0.308" />
         <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/drawable/ic_login_person.xml" value="0.2335" />
+        <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/drawable/ic_move.xml" value="0.308" />
         <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/drawable/ic_person_outline.xml" value="0.308" />
+        <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/drawable/ic_profile.xml" value="0.308" />
         <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/drawable/ic_splash.xml" value="0.136" />
         <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/drawable/ic_splash_screen.xml" value="0.2335" />
         <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/drawable/ic_statistics.xml" value="0.104" />
@@ -19,6 +24,11 @@
         <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/layout/fragment_new.xml" value="0.22" />
         <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/layout/fragment_profile.xml" value="0.3333333333333333" />
         <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/layout/fragment_statistics.xml" value="0.22" />
+        <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/layout/fragment_tickets.xml" value="0.2501068832834545" />
+        <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/layout/fragment_todo.xml" value="0.22" />
+        <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/layout/ticket_done.xml" value="0.2501068832834545" />
+        <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/layout/ticket_in_progress.xml" value="0.2501068832834545" />
+        <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/layout/ticket_todo.xml" value="0.2501068832834545" />
         <entry key="..\:/Fakultet/6. semestar/Razvoj mobilnih aplikacija/Domaci/vuk_vukovic_rn9420/app/src/main/res/menu/bottom_navigation.xml" value="0.3046875" />
       </map>
     </option>

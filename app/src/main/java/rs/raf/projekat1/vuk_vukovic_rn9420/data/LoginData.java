@@ -8,4 +8,6 @@ public class LoginData {
     public static final String PREF = "pref";
     public static final String PREF_USERNAME = "prefUsername";
     public static final String PREF_EMAIL = "prefEmail";
+
+    public static boolean IS_ADMIN = false;
 }

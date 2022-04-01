@@ -49,12 +49,13 @@ public class ProfileFragment extends Fragment {
 
     private void initListeners(){
         logoutButton.setOnClickListener(click -> {
-            logoutFromPreferences();
+            logout();
             returnToLogin();
         });
     }
 
-    private void logoutFromPreferences(){
+    private void logout(){
+        LoginData.IS_ADMIN = false;
         getActivity().getSharedPreferences(LoginData.PREF, Context.MODE_PRIVATE).edit().clear().apply();
     }
 

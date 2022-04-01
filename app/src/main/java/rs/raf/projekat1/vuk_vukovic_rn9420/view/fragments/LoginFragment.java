@@ -87,6 +87,7 @@ public class LoginFragment extends Fragment {
         String username = usernameEditText.getText().toString();
         if(username.startsWith("admin")){
             if(password.equals(LoginData.ADMIN_PASSWORD)){
+                LoginData.IS_ADMIN = true;
                 return true;
             }
         }
