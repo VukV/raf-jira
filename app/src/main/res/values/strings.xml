@@ -60,4 +60,6 @@
     <string name="title_empty">Title must not be empty</string>
     <string name="desc_empty">Description must not be empty</string>
     <string name="est_empty">Estimation must not be empty</string>
+
+    <string name="search">Search</string>
 </resources>

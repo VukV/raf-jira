@@ -29,17 +29,21 @@ public class ToDoFragment extends Fragment {
 
     public ToDoFragment() {
         super(R.layout.fragment_ticket_recycler);
-        toDoViewModel = new ViewModelProvider(requireActivity()).get(ToDoViewModel.class);
+
+        //toDoViewModel = new ViewModelProvider(requireActivity()).get(ToDoViewModel.class);
+        //TODO - zasto crash?
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        toDoViewModel = new ViewModelProvider(requireActivity()).get(ToDoViewModel.class);
 
         initView(view);
         initListeners();
-        //initObservers();
-        //initRecycler();
+        initObservers();
+        initRecycler();
     }
 
     private void initView(View view){
@@ -73,8 +77,8 @@ public class ToDoFragment extends Fragment {
     }
 
     private void initRecycler() {
-        toDoAdapter = new ToDoAdapter(new TicketDiffer(), car -> {
-            //TODO
+        toDoAdapter = new ToDoAdapter(new TicketDiffer(), ticket -> {
+            //TODO details activity
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         recyclerView.setAdapter(toDoAdapter);

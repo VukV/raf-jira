@@ -46,4 +46,32 @@ public class Ticket {
     public String getPriority() {
         return priority;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setEstimation(int estimation) {
+        this.estimation = estimation;
+    }
+
+    public void setLoggedTime(int loggedTime) {
+        this.loggedTime = loggedTime;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
 }

@@ -19,4 +19,13 @@ public class ToDoViewModel extends ViewModel {
     public LiveData<List<Ticket>> getTickets() {
         return tickets;
     }
+
+    public void addTicket(Ticket ticket){
+        counter++;
+        ticket.setId(counter);
+
+        ticketList.add(ticket);
+        ArrayList<Ticket> listToSubmit = new ArrayList<>(ticketList);
+        tickets.setValue(listToSubmit);
+    }
 }

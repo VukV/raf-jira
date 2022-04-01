@@ -11,8 +11,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
+import rs.raf.projekat1.vuk_vukovic_rn9420.model.Ticket;
+import rs.raf.projekat1.vuk_vukovic_rn9420.viewmodel.ToDoViewModel;
 
 public class NewFragment extends Fragment {
 
@@ -23,13 +26,17 @@ public class NewFragment extends Fragment {
     private EditText descriptionEditText;
     private Button newTicketButton;
 
+    private ToDoViewModel toDoViewModel;
+
     public NewFragment() {
         super(R.layout.fragment_new);
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        toDoViewModel = new ViewModelProvider(requireActivity()).get(ToDoViewModel.class);
 
         initView(view);
         initListeners();
@@ -59,7 +66,12 @@ public class NewFragment extends Fragment {
     private void initListeners(){
         newTicketButton.setOnClickListener(click -> {
             if (checkUserInput()){
-                //TODO ADD NEW TICKET
+                Ticket newTicket = new Ticket(titleEditText.getText().toString(), descriptionEditText.getText().toString(),
+                        Integer.parseInt(estEditText.getText().toString()), typeSpinner.getSelectedItem().toString(),
+                        prioritySpinner.getSelectedItem().toString());
+                toDoViewModel.addTicket(newTicket);
+
+                clearInput();
             }
         });
     }
@@ -83,5 +95,11 @@ public class NewFragment extends Fragment {
             return false;
         }
         return true;
+    }
+
+    private void clearInput(){
+        estEditText.setText("");
+        titleEditText.setText("");
+        descriptionEditText.setText("");
     }
 }

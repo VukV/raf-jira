@@ -61,7 +61,7 @@ public class ToDoAdapter extends ListAdapter<Ticket, ToDoAdapter.ViewHolder> {
         }
 
         public void bind(Ticket ticket){
-            ImageView ticketImageView = itemView.findViewById(R.id.ticketImageView);
+            ImageView ticketImageView = itemView.findViewById(R.id.todoImageView);
             if (ticket.getType().equalsIgnoreCase(context.getString(R.string.enhancement))){
                 ticketImageView.setImageResource(R.drawable.ic_enhancement);
             }
@@ -69,8 +69,8 @@ public class ToDoAdapter extends ListAdapter<Ticket, ToDoAdapter.ViewHolder> {
                 ticketImageView.setImageResource(R.drawable.ic_bug);
             }
 
-            ((TextView)itemView.findViewById(R.id.ticketTitleTextView)).setText(ticket.getTitle());
-            ((TextView)itemView.findViewById(R.id.ticketDescTextView)).setText(ticket.getDescription());
+            ((TextView)itemView.findViewById(R.id.todoTitleTextView)).setText(ticket.getTitle());
+            ((TextView)itemView.findViewById(R.id.todoDescTextView)).setText(ticket.getDescription());
         }
     }
 }
