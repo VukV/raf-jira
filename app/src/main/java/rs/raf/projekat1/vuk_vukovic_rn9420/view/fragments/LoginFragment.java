@@ -58,7 +58,7 @@ public class LoginFragment extends Fragment {
     private boolean checkUsername(){
         String username = usernameEditText.getText().toString();
         if(username.equals("")){
-            Toast.makeText(getActivity(), "Username must not be empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.username_empty), Toast.LENGTH_SHORT).show();
             return false;
         }
         else {
@@ -69,7 +69,7 @@ public class LoginFragment extends Fragment {
     private boolean checkEmail(){
         String email = emailEditText.getText().toString();
         if(email.equals("")){
-            Toast.makeText(getActivity(), "Email must not be empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.email_empty), Toast.LENGTH_SHORT).show();
             return false;
         }
         else {
@@ -80,7 +80,7 @@ public class LoginFragment extends Fragment {
     private boolean checkPassword(){
         String password = passwordEditText.getText().toString();
         if(password.length() < 5){
-            Toast.makeText(getActivity(), "Password must be at least 5 characters", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.password_length), Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -96,7 +96,7 @@ public class LoginFragment extends Fragment {
             }
         }
 
-        Toast.makeText(getActivity(), "Incorrect password", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), getString(R.string.incorrect_password), Toast.LENGTH_SHORT).show();
         return false;
     }
 

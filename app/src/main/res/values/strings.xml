@@ -20,4 +20,44 @@
     <string name="todo">ToDo</string>
     <string name="in_progress">In Progress</string>
     <string name="done">Done</string>
+
+    <string name="new_ticket">Add New Ticket</string>
+    <string name="ticket_title">Ticket Title</string>
+    <string name="ticket_desc">Ticket Description</string>
+    <string name="ticket_est">Est.</string>
+
+
+    <string name="type">Type</string>
+    <string name="priority">Priority</string>
+
+    <string name="enhancement">Enhancement</string>
+    <string name="bug">Bug</string>
+
+    <string-array name="ticket_types">
+        <item>@string/enhancement</item>
+        <item>@string/bug</item>
+    </string-array>
+
+
+    <string name="highest">Highest</string>
+    <string name="high">High</string>
+    <string name="medium">Medium</string>
+    <string name="low">Low</string>
+    <string name="lowest">Lowest</string>
+
+    <string-array name="ticket_priorities">
+        <item>@string/highest</item>
+        <item>@string/high</item>
+        <item>@string/medium</item>
+        <item>@string/low</item>
+        <item>@string/lowest</item>
+    </string-array>
+
+    <string name="username_empty">Username must not be empty</string>
+    <string name="email_empty">Email must not be empty</string>
+    <string name="password_length">Password must be at least 5 characters</string>
+    <string name="incorrect_password">Incorrect password</string>
+    <string name="title_empty">Title must not be empty</string>
+    <string name="desc_empty">Description must not be empty</string>
+    <string name="est_empty">Estimation must not be empty</string>
 </resources>
