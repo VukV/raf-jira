@@ -106,7 +106,6 @@ public class TicketDetailsFragment extends Fragment {
 
     private void initListeners(){
         loggedTimeButton.setOnClickListener(click -> {
-            //toDoViewModel.updateLoggedTime(ticket);
             ticket.setLoggedTime(ticket.getLoggedTime() + 1);
             loggedTimeButton.setText(String.valueOf(ticket.getLoggedTime()));
         });

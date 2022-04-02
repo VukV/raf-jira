@@ -79,13 +79,6 @@ public class InProgressViewModel extends ViewModel {
         }
     }
 
-    public void updateLoggedTime(Ticket ticket){
-        ticket.setLoggedTime(ticket.getLoggedTime() + 1);
-
-        //ArrayList<Ticket> listToSubmit = new ArrayList<>(ticketList);
-        //tickets.setValue(listToSubmit);
-    }
-
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void search(String searchString){
         List<Ticket> filteredList = ticketList.stream().filter(t -> t.getTitle().toLowerCase().startsWith(searchString.toLowerCase())).collect(Collectors.toList());
