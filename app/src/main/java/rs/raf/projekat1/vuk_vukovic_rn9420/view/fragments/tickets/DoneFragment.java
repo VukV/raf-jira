@@ -1,5 +1,6 @@
 package rs.raf.projekat1.vuk_vukovic_rn9420.view.fragments.tickets;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -8,6 +9,7 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
@@ -62,9 +64,10 @@ public class DoneFragment extends Fragment {
 
             }
 
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void afterTextChanged(Editable editable) {
-                //TODO SEARCH
+                doneViewModel.search(editable.toString());
             }
         });
     }

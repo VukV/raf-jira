@@ -1,11 +1,15 @@
 package rs.raf.projekat1.vuk_vukovic_rn9420.viewmodel;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.State;
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.Ticket;
@@ -54,5 +58,11 @@ public class DoneViewModel extends ViewModel {
         else {
             bugCount.setValue(bugCount.getValue() + 1);
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void search(String searchString){
+        List<Ticket> filteredList = ticketList.stream().filter(t -> t.getTitle().toLowerCase().startsWith(searchString.toLowerCase())).collect(Collectors.toList());
+        tickets.setValue(filteredList);
     }
 }

@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.State;
@@ -90,5 +91,11 @@ public class ToDoViewModel extends ViewModel {
 
         //ArrayList<Ticket> listToSubmit = new ArrayList<>(ticketList);
         //tickets.setValue(listToSubmit);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void search(String searchString){
+        List<Ticket> filteredList = ticketList.stream().filter(t -> t.getTitle().toLowerCase().startsWith(searchString.toLowerCase())).collect(Collectors.toList());
+        tickets.setValue(filteredList);
     }
 }
