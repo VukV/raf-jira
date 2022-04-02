@@ -1,6 +1,7 @@
 package rs.raf.projekat1.vuk_vukovic_rn9420.view.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;

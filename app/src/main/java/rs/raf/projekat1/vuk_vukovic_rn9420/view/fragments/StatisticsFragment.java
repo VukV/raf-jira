@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
+import rs.raf.projekat1.vuk_vukovic_rn9420.viewmodel.ToDoViewModel;
 
 public class StatisticsFragment extends Fragment {
 
@@ -25,6 +26,8 @@ public class StatisticsFragment extends Fragment {
     private TextView doneEnhancementsTextView;
     private TextView doneBugsTextView;
 
+    private ToDoViewModel toDoViewModel;
+
     public StatisticsFragment() {
         super(R.layout.fragment_statistics);
     }
@@ -32,6 +35,8 @@ public class StatisticsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
         initView(view);
     }
 

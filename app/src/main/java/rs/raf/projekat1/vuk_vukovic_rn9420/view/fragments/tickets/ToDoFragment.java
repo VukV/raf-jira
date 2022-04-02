@@ -1,22 +1,22 @@
 package rs.raf.projekat1.vuk_vukovic_rn9420.view.fragments.tickets;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
-import rs.raf.projekat1.vuk_vukovic_rn9420.view.activities.TicketDetailsActivity;
+import rs.raf.projekat1.vuk_vukovic_rn9420.model.Ticket;
+import rs.raf.projekat1.vuk_vukovic_rn9420.view.fragments.TicketDetailsFragment;
 import rs.raf.projekat1.vuk_vukovic_rn9420.view.recycler.adapter.ToDoAdapter;
 import rs.raf.projekat1.vuk_vukovic_rn9420.view.recycler.differ.TicketDiffer;
 import rs.raf.projekat1.vuk_vukovic_rn9420.viewmodel.ToDoViewModel;
@@ -30,7 +30,7 @@ public class ToDoFragment extends Fragment {
     private ToDoAdapter toDoAdapter;
 
     public ToDoFragment() {
-        super(R.layout.fragment_ticket_recycler);
+        super(R.layout.fragment_todo_recycler);
 
         //toDoViewModel = new ViewModelProvider(requireActivity()).get(ToDoViewModel.class);
         //TODO - zasto crash?
@@ -49,8 +49,8 @@ public class ToDoFragment extends Fragment {
     }
 
     private void initView(View view){
-        recyclerView = view.findViewById(R.id.ticketRecyclerView);
-        searchEditText = view.findViewById(R.id.ticketSearchEditText);
+        recyclerView = view.findViewById(R.id.todoRecyclerView);
+        searchEditText = view.findViewById(R.id.todoSearchEditText);
     }
 
     private void initListeners(){
@@ -80,11 +80,16 @@ public class ToDoFragment extends Fragment {
 
     private void initRecycler() {
         toDoAdapter = new ToDoAdapter(new TicketDiffer(), ticket -> {
-            Intent ticketDetailsIntent = new Intent(requireActivity(), TicketDetailsActivity.class);
-            ticketDetailsIntent.putExtra(TicketDetailsActivity.TICKET_KEY, ticket);
-            startActivity(ticketDetailsIntent);
+            startDetailsFragment(ticket);
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         recyclerView.setAdapter(toDoAdapter);
+    }
+
+    private void startDetailsFragment(Ticket ticket){
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.addToBackStack(null);
+        transaction.replace(R.id.fragmentContainerMain, new TicketDetailsFragment(ticket));
+        transaction.commit();
     }
 }

@@ -1,9 +1,7 @@
 package rs.raf.projekat1.vuk_vukovic_rn9420.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
 
-public class Ticket implements Parcelable {
+public class Ticket{
 
     private int id;
     private String title;
@@ -21,28 +19,6 @@ public class Ticket implements Parcelable {
         this.type = type;
         this.priority = priority;
     }
-
-    public Ticket(Parcel in) {
-        id = in.readInt();
-        title = in.readString();
-        description = in.readString();
-        estimation = in.readInt();
-        loggedTime = in.readInt();
-        type = in.readString();
-        priority = in.readString();
-    }
-
-    public static final Creator<Ticket> CREATOR = new Creator<Ticket>() {
-        @Override
-        public Ticket createFromParcel(Parcel in) {
-            return new Ticket(in);
-        }
-
-        @Override
-        public Ticket[] newArray(int size) {
-            return new Ticket[size];
-        }
-    };
 
     public int getId() {
         return id;
@@ -100,19 +76,4 @@ public class Ticket implements Parcelable {
         this.priority = priority;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(title);
-        parcel.writeString(description);
-        parcel.writeString(type);
-        parcel.writeString(priority);
-        parcel.writeInt(id);
-        parcel.writeInt(estimation);
-        parcel.writeInt(loggedTime);
-    }
 }

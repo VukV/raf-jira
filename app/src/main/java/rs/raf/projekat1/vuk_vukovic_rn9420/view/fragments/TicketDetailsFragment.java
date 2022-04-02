@@ -1,21 +1,22 @@
-package rs.raf.projekat1.vuk_vukovic_rn9420.view.activities;
+package rs.raf.projekat1.vuk_vukovic_rn9420.view.fragments;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.Ticket;
 import rs.raf.projekat1.vuk_vukovic_rn9420.viewmodel.ToDoViewModel;
 
-public class TicketDetailsActivity extends AppCompatActivity {
-
-    public static final String TICKET_KEY = "ticket";
+public class TicketDetailsFragment extends Fragment {
 
     private Ticket ticket;
     private ToDoViewModel toDoViewModel;
@@ -29,37 +30,36 @@ public class TicketDetailsActivity extends AppCompatActivity {
     private TextView descriptionTextView;
     private ImageView iconImageView;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ticket_details);
-        toDoViewModel = new ViewModelProvider(this).get(ToDoViewModel.class);
+    public TicketDetailsFragment(Ticket ticket) {
+        super(R.layout.fragment_ticket_details);
+        this.ticket = ticket;
+    }
 
-        initView();
-        parseTicket();
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        toDoViewModel = new ViewModelProvider(requireActivity()).get(ToDoViewModel.class);
+
+        initView(view);
+        handleTicket();
         initListeners();
     }
 
-    private void initView(){
-        loggedTimeButton = findViewById(R.id.loggedTimeButton);
-        openEditButton = findViewById(R.id.openEditButton);
+    private void initView(View view){
+        loggedTimeButton = view.findViewById(R.id.loggedTimeButton);
+        openEditButton = view.findViewById(R.id.openEditButton);
 
-        titleTextView = findViewById(R.id.ticketTitleTextView);
-        typeTextView = findViewById(R.id.ticketType);
-        priorityTextView = findViewById(R.id.ticketPriority);
-        estimationTextView = findViewById(R.id.ticketEstimation);
-        descriptionTextView = findViewById(R.id.ticketDescription);
+        titleTextView = view.findViewById(R.id.ticketTitleTextView);
+        typeTextView = view.findViewById(R.id.ticketType);
+        priorityTextView = view.findViewById(R.id.ticketPriority);
+        estimationTextView = view.findViewById(R.id.ticketEstimation);
+        descriptionTextView = view.findViewById(R.id.ticketDescription);
 
-        iconImageView = findViewById(R.id.ticketDetailsImageView);
+        iconImageView = view.findViewById(R.id.ticketDetailsImageView);
     }
 
-    private void parseTicket(){
-        Intent intent = getIntent();
-        if (intent.getExtras() != null){
-            this.ticket = intent.getExtras().getParcelable(TICKET_KEY);
-        }
-
-        if(ticket != null){
+    private void handleTicket(){
+        if (ticket != null){
             titleTextView.setText(ticket.getTitle());
             typeTextView.setText(ticket.getType());
             priorityTextView.setText(ticket.getPriority());
@@ -67,13 +67,12 @@ public class TicketDetailsActivity extends AppCompatActivity {
             descriptionTextView.setText(ticket.getDescription());
 
             loggedTimeButton.setText(String.valueOf(ticket.getLoggedTime()));
-            /*if (ticket.getType().equalsIgnoreCase(getString(R.string.enhancement))){
+            if (ticket.getType().equalsIgnoreCase(getString(R.string.enhancement))){
                 iconImageView.setImageResource(R.drawable.ic_enhancement);
             }
             else {
                 iconImageView.setImageResource(R.drawable.ic_bug);
-            }*/
-            iconImageView.setImageResource(R.drawable.ic_bug);
+            }
         }
     }
 
@@ -84,7 +83,7 @@ public class TicketDetailsActivity extends AppCompatActivity {
         });
 
         openEditButton.setOnClickListener(click -> {
-            //TODO open edit activity
+            //TODO open edit fragment
         });
     }
 }

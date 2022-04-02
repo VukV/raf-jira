@@ -1,6 +1,7 @@
 package rs.raf.projekat1.vuk_vukovic_rn9420.viewmodel;
 
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
@@ -9,6 +10,7 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.Ticket;
 
@@ -17,6 +19,7 @@ public class ToDoViewModel extends ViewModel {
     public static int counter = 0;
 
     private final MutableLiveData<List<Ticket>> tickets = new MutableLiveData<>();
+    private final MutableLiveData<Integer> ticketCount = new MutableLiveData<>(0);
     private ArrayList<Ticket> ticketList = new ArrayList<>();
 
     public LiveData<List<Ticket>> getTickets() {
@@ -30,15 +33,14 @@ public class ToDoViewModel extends ViewModel {
         ticketList.add(ticket);
         ArrayList<Ticket> listToSubmit = new ArrayList<>(ticketList);
         tickets.setValue(listToSubmit);
+
+        ticketCount.setValue(ticketCount.getValue() + 1);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void updateLoggedTime(Ticket ticket){
-        //ticket.setLoggedTime(ticket.getLoggedTime() + 1);
-        Ticket ticketToChange = (Ticket) ticketList.stream().filter(t -> t.getId() == ticket.getId());
-        ticketToChange.setLoggedTime(ticketToChange.getLoggedTime() + 1);
+        ticket.setLoggedTime(ticket.getLoggedTime() + 1);
 
-        ArrayList<Ticket> listToSubmit = new ArrayList<>(ticketList);
-        tickets.setValue(listToSubmit);
+        //ArrayList<Ticket> listToSubmit = new ArrayList<>(ticketList);
+        //tickets.setValue(listToSubmit);
     }
 }
