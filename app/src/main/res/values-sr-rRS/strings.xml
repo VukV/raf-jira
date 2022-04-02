@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">vuk_vukovic_rn9420</string>
+    <string name="username">Korisnicko ime</string>
+    <string name="email">Imejl</string>
+    <string name="password">Sifra</string>
+    <string name="login">Uloguj Se</string>
+    <string name="statistics_menu">Statistika</string>
+    <string name="new_menu">Dodaj</string>
+    <string name="tickets_menu">Tiketi</string>
+    <string name="profile_menu">Profil</string>
+    <string name="logout">Izloguj Se</string>
+    <string name="unavailable">Nedostupno</string>
+    <string name="statistics_title">RAF Jira Statistika</string>
+    <string name="enhancements">Poboljsanja</string>
+    <string name="bugs">Greske</string>
+    <string name="todo">Uraditi</string>
+    <string name="in_progress">U toku</string>
+    <string name="done">Gotovo</string>
+    <string name="new_ticket">Dodaj Novi Tiket</string>
+    <string name="ticket_title">Naziv Tiketa</string>
+    <string name="ticket_desc">Opis Tiketa</string>
+    <string name="ticket_est">Est.</string>
+    <string name="logged_time">Zabeleno Vreme</string>
+    <string name="type">Tip</string>
+    <string name="priority">Prioritet</string>
+    <string name="enhancement">Poboljsanje</string>
+    <string name="bug">Greska</string>
+    <string name="highest">Najvisi</string>
+    <string name="high">Visok</string>
+    <string name="medium">Srednji</string>
+    <string name="low">Nizak</string>
+    <string name="lowest">Najnizi</string>
+    <string name="username_empty">Korisnicko ime ne sme biti prazno</string>
+    <string name="email_empty">Imejl ne sme biti prazan</string>
+    <string name="password_length">Sifra mora da sadrzi bar 5 karaktera</string>
+    <string name="incorrect_password">Pogresna sifra</string>
+    <string name="title_empty">Naziv ne sme biti prazan</string>
+    <string name="desc_empty">Opis ne sme biti prazan</string>
+    <string name="est_empty">Procena ne sme biti prazna</string>
+    <string name="search">Pretraga</string>
+    <string name="edit">Izmeni</string>
+    <string name="save">Sacuvaj Promene</string>
+    <string name="edit_ticket">Izmeni Tiket</string>
+
+    <string-array name="ticket_types">
+        <item>@string/enhancement</item>
+        <item>@string/bug</item>
+    </string-array>
+
+    <string-array name="ticket_priorities">
+        <item>@string/highest</item>
+        <item>@string/high</item>
+        <item>@string/medium</item>
+        <item>@string/low</item>
+        <item>@string/lowest</item>
+    </string-array>
+</resources>
