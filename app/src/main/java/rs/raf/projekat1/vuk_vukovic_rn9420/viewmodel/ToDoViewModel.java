@@ -1,5 +1,8 @@
 package rs.raf.projekat1.vuk_vukovic_rn9420.viewmodel;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -25,6 +28,16 @@ public class ToDoViewModel extends ViewModel {
         ticket.setId(counter);
 
         ticketList.add(ticket);
+        ArrayList<Ticket> listToSubmit = new ArrayList<>(ticketList);
+        tickets.setValue(listToSubmit);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void updateLoggedTime(Ticket ticket){
+        //ticket.setLoggedTime(ticket.getLoggedTime() + 1);
+        Ticket ticketToChange = (Ticket) ticketList.stream().filter(t -> t.getId() == ticket.getId());
+        ticketToChange.setLoggedTime(ticketToChange.getLoggedTime() + 1);
+
         ArrayList<Ticket> listToSubmit = new ArrayList<>(ticketList);
         tickets.setValue(listToSubmit);
     }

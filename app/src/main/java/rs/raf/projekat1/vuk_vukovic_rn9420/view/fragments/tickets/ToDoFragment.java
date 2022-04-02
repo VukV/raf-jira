@@ -1,5 +1,6 @@
 package rs.raf.projekat1.vuk_vukovic_rn9420.view.fragments.tickets;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
+import rs.raf.projekat1.vuk_vukovic_rn9420.view.activities.TicketDetailsActivity;
 import rs.raf.projekat1.vuk_vukovic_rn9420.view.recycler.adapter.ToDoAdapter;
 import rs.raf.projekat1.vuk_vukovic_rn9420.view.recycler.differ.TicketDiffer;
 import rs.raf.projekat1.vuk_vukovic_rn9420.viewmodel.ToDoViewModel;
@@ -71,14 +73,16 @@ public class ToDoFragment extends Fragment {
     }
 
     private void initObservers() {
-        toDoViewModel.getTickets().observe(getViewLifecycleOwner(), cars -> {
-            toDoAdapter.submitList(cars);
+        toDoViewModel.getTickets().observe(getViewLifecycleOwner(), tickets -> {
+            toDoAdapter.submitList(tickets);
         });
     }
 
     private void initRecycler() {
         toDoAdapter = new ToDoAdapter(new TicketDiffer(), ticket -> {
-            //TODO details activity
+            Intent ticketDetailsIntent = new Intent(requireActivity(), TicketDetailsActivity.class);
+            ticketDetailsIntent.putExtra(TicketDetailsActivity.TICKET_KEY, ticket);
+            startActivity(ticketDetailsIntent);
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         recyclerView.setAdapter(toDoAdapter);

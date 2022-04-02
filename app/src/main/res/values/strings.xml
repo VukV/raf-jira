@@ -25,7 +25,7 @@
     <string name="ticket_title">Ticket Title</string>
     <string name="ticket_desc">Ticket Description</string>
     <string name="ticket_est">Est.</string>
-
+    <string name="logged_time">Logged Time</string>
 
     <string name="type">Type</string>
     <string name="priority">Priority</string>
@@ -37,7 +37,6 @@
         <item>@string/enhancement</item>
         <item>@string/bug</item>
     </string-array>
-
 
     <string name="highest">Highest</string>
     <string name="high">High</string>
@@ -62,4 +61,5 @@
     <string name="est_empty">Estimation must not be empty</string>
 
     <string name="search">Search</string>
+    <string name="edit">Edit</string>
 </resources>

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vuk_vukovic_rn9420">
         <activity
+            android:name=".view.activities.TicketDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activities.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Splash">
