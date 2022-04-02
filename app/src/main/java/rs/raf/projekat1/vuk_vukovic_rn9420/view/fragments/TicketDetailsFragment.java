@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
@@ -110,7 +111,7 @@ public class TicketDetailsFragment extends Fragment {
         });
 
         openEditButton.setOnClickListener(click -> {
-            //TODO open edit fragment
+            startEditFragment(ticket);
         });
     }
 
@@ -121,5 +122,12 @@ public class TicketDetailsFragment extends Fragment {
         if(ticket.getState().equals(State.DONE)){
             openEditButton.setVisibility(View.INVISIBLE);
         }
+    }
+
+    private void startEditFragment(Ticket ticket){
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.addToBackStack(null);
+        transaction.replace(R.id.fragmentContainerMain, new EditFragment(ticket));
+        transaction.commit();
     }
 }

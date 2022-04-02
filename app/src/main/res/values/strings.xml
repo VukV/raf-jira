@@ -62,4 +62,7 @@
 
     <string name="search">Search</string>
     <string name="edit">Edit</string>
+
+    <string name="save">Save Changes</string>
+    <string name="edit_ticket">Edit Ticket</string>
 </resources>
