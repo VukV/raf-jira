@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import rs.raf.projekat1.vuk_vukovic_rn9420.R;
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.Ticket;
 
 public class ToDoViewModel extends ViewModel {
@@ -26,6 +27,10 @@ public class ToDoViewModel extends ViewModel {
         return tickets;
     }
 
+    public LiveData<Integer> getTicketCount(){
+        return ticketCount;
+    }
+
     public void addTicket(Ticket ticket){
         counter++;
         ticket.setId(counter);
@@ -34,7 +39,15 @@ public class ToDoViewModel extends ViewModel {
         ArrayList<Ticket> listToSubmit = new ArrayList<>(ticketList);
         tickets.setValue(listToSubmit);
 
+        updateCount(ticket);
+    }
+
+    private void updateCount(Ticket ticket){
         ticketCount.setValue(ticketCount.getValue() + 1);
+
+//        if(ticket.getType().equalsIgnoreCase(R.string.enhancement)){
+//
+//        }
     }
 
     public void updateLoggedTime(Ticket ticket){

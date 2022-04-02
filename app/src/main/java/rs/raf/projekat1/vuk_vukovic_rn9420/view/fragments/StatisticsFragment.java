@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
 import rs.raf.projekat1.vuk_vukovic_rn9420.viewmodel.ToDoViewModel;
@@ -35,9 +36,10 @@ public class StatisticsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        toDoViewModel = new ViewModelProvider(requireActivity()).get(ToDoViewModel.class);
 
         initView(view);
+        initObservers();
     }
 
     private void initView(View view){
@@ -52,5 +54,11 @@ public class StatisticsFragment extends Fragment {
         doneTotalTextView = view.findViewById(R.id.doneTotal);
         doneEnhancementsTextView = view.findViewById(R.id.doneEnhancements);
         doneBugsTextView = view.findViewById(R.id.doneBugs);
+    }
+
+    private void initObservers(){
+        toDoViewModel.getTicketCount().observe(getViewLifecycleOwner(), ticketCount -> {
+            toDoTotalTextView.setText(String.valueOf(ticketCount));
+        });
     }
 }
