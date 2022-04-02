@@ -10,6 +10,7 @@ public class Ticket{
     private int loggedTime;
     private Type type;
     private Priority priority;
+    private State state;
 
     public Ticket(String title, String description, int estimation, Type type, Priority priority) {
         this.title = title;
@@ -18,6 +19,7 @@ public class Ticket{
         this.loggedTime = 0;
         this.type = type;
         this.priority = priority;
+        this.state = State.TODO;
     }
 
     public int getId() {
@@ -74,5 +76,13 @@ public class Ticket{
 
     public void setPriority(Priority priority) {
         this.priority = priority;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 }

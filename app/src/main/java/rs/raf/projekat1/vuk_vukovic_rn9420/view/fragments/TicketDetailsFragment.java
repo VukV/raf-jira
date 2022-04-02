@@ -13,7 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
+import rs.raf.projekat1.vuk_vukovic_rn9420.data.LoginData;
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.Priority;
+import rs.raf.projekat1.vuk_vukovic_rn9420.model.State;
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.Ticket;
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.Type;
 import rs.raf.projekat1.vuk_vukovic_rn9420.viewmodel.ToDoViewModel;
@@ -58,6 +60,8 @@ public class TicketDetailsFragment extends Fragment {
         descriptionTextView = view.findViewById(R.id.ticketDescription);
 
         iconImageView = view.findViewById(R.id.ticketDetailsImageView);
+
+        checkPrivileges();
     }
 
     private void handleTicket(){
@@ -100,12 +104,22 @@ public class TicketDetailsFragment extends Fragment {
 
     private void initListeners(){
         loggedTimeButton.setOnClickListener(click -> {
-            toDoViewModel.updateLoggedTime(ticket);
+            //toDoViewModel.updateLoggedTime(ticket);
+            ticket.setLoggedTime(ticket.getLoggedTime() + 1);
             loggedTimeButton.setText(String.valueOf(ticket.getLoggedTime()));
         });
 
         openEditButton.setOnClickListener(click -> {
             //TODO open edit fragment
         });
+    }
+
+    private void checkPrivileges(){
+        if (!LoginData.IS_ADMIN){
+            openEditButton.setVisibility(View.INVISIBLE);
+        }
+        else if(!(ticket.getState().equals(State.TODO) || ticket.getState().equals(State.IN_PROGRESS))){
+            openEditButton.setVisibility(View.INVISIBLE);
+        }
     }
 }

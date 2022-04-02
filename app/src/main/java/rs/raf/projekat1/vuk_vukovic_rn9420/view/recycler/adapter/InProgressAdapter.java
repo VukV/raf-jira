@@ -17,17 +17,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.function.Consumer;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
-import rs.raf.projekat1.vuk_vukovic_rn9420.data.LoginData;
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.Ticket;
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.TicketAction;
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.TicketCallbackInfo;
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.Type;
 
-public class ToDoAdapter extends ListAdapter<Ticket, ToDoAdapter.ToDoViewHolder> {
+public class InProgressAdapter extends ListAdapter<Ticket, InProgressAdapter.InProgressViewHolder> {
 
     private final Consumer<TicketCallbackInfo> onTicketClicked;
 
-    public ToDoAdapter(@NonNull DiffUtil.ItemCallback<Ticket> diffCallback, Consumer<TicketCallbackInfo> onTicketClicked) {
+    public InProgressAdapter(@NonNull DiffUtil.ItemCallback<Ticket> diffCallback, Consumer<TicketCallbackInfo> onTicketClicked) {
         super(diffCallback);
         this.onTicketClicked = onTicketClicked;
     }
@@ -35,9 +34,9 @@ public class ToDoAdapter extends ListAdapter<Ticket, ToDoAdapter.ToDoViewHolder>
     @RequiresApi(api = Build.VERSION_CODES.N)
     @NonNull
     @Override
-    public ToDoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ticket_todo, parent, false);
-        return new ToDoViewHolder(view, parent.getContext(), ticketInfo -> {
+    public InProgressViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ticket_in_progress, parent, false);
+        return new InProgressViewHolder(view, parent.getContext(), ticketInfo -> {
             Ticket ticket = getItem(ticketInfo.getPosition());
             ticketInfo.setTicket(ticket);
             onTicketClicked.accept(ticketInfo);
@@ -45,26 +44,25 @@ public class ToDoAdapter extends ListAdapter<Ticket, ToDoAdapter.ToDoViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ToDoViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull InProgressViewHolder holder, int position) {
         Ticket ticket = getItem(position);
         holder.bind(ticket);
     }
 
-    public static class ToDoViewHolder extends RecyclerView.ViewHolder{
+    public static class InProgressViewHolder extends RecyclerView.ViewHolder{
 
         private final Context context;
 
         @RequiresApi(api = Build.VERSION_CODES.N)
-        public ToDoViewHolder(@NonNull View itemView, Context context, Consumer<TicketCallbackInfo> onItemClicked) {
+        public InProgressViewHolder(@NonNull View itemView, Context context, Consumer<TicketCallbackInfo> onItemClicked) {
             super(itemView);
             this.context = context;
 
-            initPrivileges();
             initListeners(itemView, onItemClicked);
         }
 
         public void bind(Ticket ticket){
-            ImageView ticketImageView = itemView.findViewById(R.id.todoImageView);
+            ImageView ticketImageView = itemView.findViewById(R.id.progressImageView);
             if (ticket.getType().equals(Type.ENHANCEMENT)){
                 ticketImageView.setImageResource(R.drawable.ic_enhancement);
             }
@@ -72,14 +70,8 @@ public class ToDoAdapter extends ListAdapter<Ticket, ToDoAdapter.ToDoViewHolder>
                 ticketImageView.setImageResource(R.drawable.ic_bug);
             }
 
-            ((TextView)itemView.findViewById(R.id.todoTitleTextView)).setText(ticket.getTitle());
-            ((TextView)itemView.findViewById(R.id.todoDescTextView)).setText(ticket.getDescription());
-        }
-
-        private void initPrivileges(){
-            if (!LoginData.IS_ADMIN){
-                itemView.findViewById(R.id.deleteTicketButton).setVisibility(View.GONE);
-            }
+            ((TextView)itemView.findViewById(R.id.progressTitleTextView)).setText(ticket.getTitle());
+            ((TextView)itemView.findViewById(R.id.progressDescTextView)).setText(ticket.getDescription());
         }
 
         @RequiresApi(api = Build.VERSION_CODES.N)
@@ -93,23 +85,24 @@ public class ToDoAdapter extends ListAdapter<Ticket, ToDoAdapter.ToDoViewHolder>
                 }
             });
 
-            view.findViewById(R.id.deleteTicketButton).setOnClickListener(click -> {
+            view.findViewById(R.id.backToTodoButton).setOnClickListener(click -> {
                 if (getBindingAdapterPosition() != RecyclerView.NO_POSITION) {
                     TicketCallbackInfo info = new TicketCallbackInfo();
                     info.setPosition(getBindingAdapterPosition());
-                    info.setAction(TicketAction.DELETE);
+                    info.setAction(TicketAction.MOVE_TO_TODO);
                     onItemClicked.accept(info);
                 }
             });
 
-            view.findViewById(R.id.moveToProgressButton).setOnClickListener(click -> {
+            view.findViewById(R.id.moveToDoneButton).setOnClickListener(click -> {
                 if (getBindingAdapterPosition() != RecyclerView.NO_POSITION) {
                     TicketCallbackInfo info = new TicketCallbackInfo();
                     info.setPosition(getBindingAdapterPosition());
-                    info.setAction(TicketAction.MOVE_TO_PROGRESS);
+                    info.setAction(TicketAction.MOVE_TO_DONE);
                     onItemClicked.accept(info);
                 }
             });
         }
+
     }
 }

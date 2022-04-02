@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
+import rs.raf.projekat1.vuk_vukovic_rn9420.viewmodel.InProgressViewModel;
 import rs.raf.projekat1.vuk_vukovic_rn9420.viewmodel.ToDoViewModel;
 
 public class StatisticsFragment extends Fragment {
@@ -28,6 +29,7 @@ public class StatisticsFragment extends Fragment {
     private TextView doneBugsTextView;
 
     private ToDoViewModel toDoViewModel;
+    private InProgressViewModel inProgressViewModel;
 
     public StatisticsFragment() {
         super(R.layout.fragment_statistics);
@@ -37,6 +39,7 @@ public class StatisticsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         toDoViewModel = new ViewModelProvider(requireActivity()).get(ToDoViewModel.class);
+        inProgressViewModel = new ViewModelProvider(requireActivity()).get(InProgressViewModel.class);
 
         initView(view);
         initObservers();
@@ -68,5 +71,19 @@ public class StatisticsFragment extends Fragment {
         toDoViewModel.getEnhancementCount().observe(getViewLifecycleOwner(), enhCount -> {
             toDoEnhancementsTextView.setText(String.valueOf(enhCount));
         });
+
+        inProgressViewModel.getTicketCount().observe(getViewLifecycleOwner(), ticketCount -> {
+            inProgressTotalTextView.setText(String.valueOf(ticketCount));
+        });
+
+        inProgressViewModel.getEnhancementCount().observe(getViewLifecycleOwner(), ticketCount -> {
+            inProgressEnhancementsTextView.setText(String.valueOf(ticketCount));
+        });
+
+        inProgressViewModel.getBugCount().observe(getViewLifecycleOwner(), ticketCount -> {
+            inProgressBugsTextView.setText(String.valueOf(ticketCount));
+        });
+
+        //TODO OSTALI VIEWMODELI I OBSERVERI
     }
 }

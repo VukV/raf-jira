@@ -20,6 +20,7 @@ import rs.raf.projekat1.vuk_vukovic_rn9420.model.TicketAction;
 import rs.raf.projekat1.vuk_vukovic_rn9420.view.fragments.TicketDetailsFragment;
 import rs.raf.projekat1.vuk_vukovic_rn9420.view.recycler.adapter.ToDoAdapter;
 import rs.raf.projekat1.vuk_vukovic_rn9420.view.recycler.differ.TicketDiffer;
+import rs.raf.projekat1.vuk_vukovic_rn9420.viewmodel.InProgressViewModel;
 import rs.raf.projekat1.vuk_vukovic_rn9420.viewmodel.ToDoViewModel;
 
 public class ToDoFragment extends Fragment {
@@ -29,6 +30,8 @@ public class ToDoFragment extends Fragment {
 
     private ToDoViewModel toDoViewModel;
     private ToDoAdapter toDoAdapter;
+
+    private InProgressViewModel inProgressViewModel;
 
     public ToDoFragment() {
         super(R.layout.fragment_todo_recycler);
@@ -42,6 +45,7 @@ public class ToDoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         toDoViewModel = new ViewModelProvider(requireActivity()).get(ToDoViewModel.class);
+        inProgressViewModel = new ViewModelProvider(requireActivity()).get(InProgressViewModel.class);
 
         initView(view);
         initListeners();
@@ -68,7 +72,7 @@ public class ToDoFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-
+                //TODO SEARCH
             }
         });
     }
@@ -85,7 +89,8 @@ public class ToDoFragment extends Fragment {
                 startDetailsFragment(ticketInfo.getTicket());
             }
             else if(ticketInfo.getAction().equals(TicketAction.MOVE_TO_PROGRESS)){
-                //TODO MOVE
+                toDoViewModel.removeTicket(ticketInfo.getTicket());
+                inProgressViewModel.addTicket(ticketInfo.getTicket());
             }
             else {
                 toDoViewModel.removeTicket(ticketInfo.getTicket());
