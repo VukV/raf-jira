@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.Ticket;
+import rs.raf.projekat1.vuk_vukovic_rn9420.model.TicketAction;
 import rs.raf.projekat1.vuk_vukovic_rn9420.view.fragments.TicketDetailsFragment;
 import rs.raf.projekat1.vuk_vukovic_rn9420.view.recycler.adapter.ToDoAdapter;
 import rs.raf.projekat1.vuk_vukovic_rn9420.view.recycler.differ.TicketDiffer;
@@ -79,8 +80,16 @@ public class ToDoFragment extends Fragment {
     }
 
     private void initRecycler() {
-        toDoAdapter = new ToDoAdapter(new TicketDiffer(), ticket -> {
-            startDetailsFragment(ticket);
+        toDoAdapter = new ToDoAdapter(new TicketDiffer(), ticketInfo -> {
+            if(ticketInfo.getAction().equals(TicketAction.OPEN_DETAILS)){
+                startDetailsFragment(ticketInfo.getTicket());
+            }
+            else if(ticketInfo.getAction().equals(TicketAction.MOVE_TO_PROGRESS)){
+                //TODO MOVE
+            }
+            else {
+                toDoViewModel.removeTicket(ticketInfo.getTicket());
+            }
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         recyclerView.setAdapter(toDoAdapter);

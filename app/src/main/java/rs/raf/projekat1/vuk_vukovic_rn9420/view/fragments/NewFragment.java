@@ -15,7 +15,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
+import rs.raf.projekat1.vuk_vukovic_rn9420.model.Priority;
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.Ticket;
+import rs.raf.projekat1.vuk_vukovic_rn9420.model.Type;
 import rs.raf.projekat1.vuk_vukovic_rn9420.viewmodel.ToDoViewModel;
 
 public class NewFragment extends Fragment {
@@ -67,9 +69,11 @@ public class NewFragment extends Fragment {
     private void initListeners(){
         newTicketButton.setOnClickListener(click -> {
             if (checkUserInput()){
+                Type type = getType();
+                Priority priority = getPriority();
+
                 Ticket newTicket = new Ticket(titleEditText.getText().toString(), descriptionEditText.getText().toString(),
-                        Integer.parseInt(estEditText.getText().toString()), typeSpinner.getSelectedItem().toString(),
-                        prioritySpinner.getSelectedItem().toString());
+                        Integer.parseInt(estEditText.getText().toString()), type, priority);
                 toDoViewModel.addTicket(newTicket);
 
                 clearInput();
@@ -96,6 +100,35 @@ public class NewFragment extends Fragment {
             return false;
         }
         return true;
+    }
+
+    private Type getType(){
+        if(typeSpinner.getSelectedItem().toString().equalsIgnoreCase(getString(R.string.enhancement))){
+            return Type.ENHANCEMENT;
+        }
+        else {
+            return Type.BUG;
+        }
+    }
+
+    private Priority getPriority(){
+        String priority = prioritySpinner.getSelectedItem().toString();
+
+        if (priority.equalsIgnoreCase(getString(R.string.lowest))){
+            return Priority.LOWEST;
+        }
+        else if (priority.equalsIgnoreCase(getString(R.string.low))){
+            return Priority.LOW;
+        }
+        else if (priority.equalsIgnoreCase(getString(R.string.medium))){
+            return Priority.MEDIUM;
+        }
+        else if (priority.equalsIgnoreCase(getString(R.string.high))){
+            return Priority.HIGH;
+        }
+        else {
+            return Priority.HIGHEST;
+        }
     }
 
     private void clearInput(){

@@ -8,10 +8,10 @@ public class Ticket{
     private String description;
     private int estimation;
     private int loggedTime;
-    private String type;
-    private String priority;
+    private Type type;
+    private Priority priority;
 
-    public Ticket(String title, String description, int estimation, String type, String priority) {
+    public Ticket(String title, String description, int estimation, Type type, Priority priority) {
         this.title = title;
         this.description = description;
         this.estimation = estimation;
@@ -40,11 +40,11 @@ public class Ticket{
         return loggedTime;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 
-    public String getPriority() {
+    public Priority getPriority() {
         return priority;
     }
 
@@ -68,12 +68,11 @@ public class Ticket{
         this.loggedTime = loggedTime;
     }
 
-    public void setType(String type) {
+    public void setType(Type type) {
         this.type = type;
     }
 
-    public void setPriority(String priority) {
+    public void setPriority(Priority priority) {
         this.priority = priority;
     }
-
 }

@@ -13,7 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
+import rs.raf.projekat1.vuk_vukovic_rn9420.model.Priority;
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.Ticket;
+import rs.raf.projekat1.vuk_vukovic_rn9420.model.Type;
 import rs.raf.projekat1.vuk_vukovic_rn9420.viewmodel.ToDoViewModel;
 
 public class TicketDetailsFragment extends Fragment {
@@ -61,18 +63,38 @@ public class TicketDetailsFragment extends Fragment {
     private void handleTicket(){
         if (ticket != null){
             titleTextView.setText(ticket.getTitle());
-            typeTextView.setText(ticket.getType());
-            priorityTextView.setText(ticket.getPriority());
             estimationTextView.setText(String.valueOf(ticket.getEstimation()));
             descriptionTextView.setText(ticket.getDescription());
 
+            setTypeText();
+            setPriorityText();
+
             loggedTimeButton.setText(String.valueOf(ticket.getLoggedTime()));
-            if (ticket.getType().equalsIgnoreCase(getString(R.string.enhancement))){
+            if (ticket.getType().equals(Type.ENHANCEMENT)){
                 iconImageView.setImageResource(R.drawable.ic_enhancement);
             }
             else {
                 iconImageView.setImageResource(R.drawable.ic_bug);
             }
+        }
+    }
+
+    private void setTypeText(){
+        if(ticket.getType().equals(Type.ENHANCEMENT)){
+            typeTextView.setText(R.string.enhancement);
+        }
+        else {
+            typeTextView.setText(R.string.bug);
+        }
+    }
+
+    private void setPriorityText(){
+        switch (ticket.getPriority()){
+            case LOWEST: priorityTextView.setText(R.string.lowest); break;
+            case LOW: priorityTextView.setText(R.string.low); break;
+            case MEDIUM: priorityTextView.setText(R.string.medium); break;
+            case HIGH: priorityTextView.setText(R.string.high); break;
+            default: priorityTextView.setText(R.string.highest);
         }
     }
 

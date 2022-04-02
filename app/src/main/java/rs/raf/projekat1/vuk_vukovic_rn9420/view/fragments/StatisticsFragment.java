@@ -60,5 +60,13 @@ public class StatisticsFragment extends Fragment {
         toDoViewModel.getTicketCount().observe(getViewLifecycleOwner(), ticketCount -> {
             toDoTotalTextView.setText(String.valueOf(ticketCount));
         });
+
+        toDoViewModel.getBugCount().observe(getViewLifecycleOwner(), bugCount -> {
+            toDoBugsTextView.setText(String.valueOf(bugCount));
+        });
+
+        toDoViewModel.getEnhancementCount().observe(getViewLifecycleOwner(), enhCount -> {
+            toDoEnhancementsTextView.setText(String.valueOf(enhCount));
+        });
     }
 }

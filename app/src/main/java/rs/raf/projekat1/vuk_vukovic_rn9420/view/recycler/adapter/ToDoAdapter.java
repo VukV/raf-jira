@@ -2,6 +2,7 @@ package rs.raf.projekat1.vuk_vukovic_rn9420.view.recycler.adapter;
 
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +18,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.function.Consumer;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
+import rs.raf.projekat1.vuk_vukovic_rn9420.data.LoginData;
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.Ticket;
+import rs.raf.projekat1.vuk_vukovic_rn9420.model.TicketAction;
+import rs.raf.projekat1.vuk_vukovic_rn9420.model.TicketCallbackInfo;
+import rs.raf.projekat1.vuk_vukovic_rn9420.model.Type;
 
 public class ToDoAdapter extends ListAdapter<Ticket, ToDoAdapter.ViewHolder> {
 
-    private final Consumer<Ticket> onTicketClicked;
+    private final Consumer<TicketCallbackInfo> onTicketClicked;
 
-    public ToDoAdapter(@NonNull DiffUtil.ItemCallback<Ticket> diffCallback, Consumer<Ticket> onTicketClicked) {
+    public ToDoAdapter(@NonNull DiffUtil.ItemCallback<Ticket> diffCallback, Consumer<TicketCallbackInfo> onTicketClicked) {
         super(diffCallback);
         this.onTicketClicked = onTicketClicked;
     }
@@ -33,9 +38,10 @@ public class ToDoAdapter extends ListAdapter<Ticket, ToDoAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ticket_todo, parent, false);
-        return new ViewHolder(view, parent.getContext(), position -> {
-            Ticket ticket = getItem(position);
-            onTicketClicked.accept(ticket);
+        return new ViewHolder(view, parent.getContext(), ticketInfo -> {
+            Ticket ticket = getItem(ticketInfo.getPosition());
+            ticketInfo.setTicket(ticket);
+            onTicketClicked.accept(ticketInfo);
         });
     }
 
@@ -50,19 +56,17 @@ public class ToDoAdapter extends ListAdapter<Ticket, ToDoAdapter.ViewHolder> {
         private final Context context;
 
         @RequiresApi(api = Build.VERSION_CODES.N)
-        public ViewHolder(@NonNull View itemView, Context context, Consumer<Integer> onItemClicked) {
+        public ViewHolder(@NonNull View itemView, Context context, Consumer<TicketCallbackInfo> onItemClicked) {
             super(itemView);
             this.context = context;
-            itemView.setOnClickListener(v -> {
-                if (getBindingAdapterPosition() != RecyclerView.NO_POSITION) {
-                    onItemClicked.accept(getBindingAdapterPosition());
-                }
-            });
+
+            initPrivileges();
+            initListeners(itemView, onItemClicked);
         }
 
         public void bind(Ticket ticket){
             ImageView ticketImageView = itemView.findViewById(R.id.todoImageView);
-            if (ticket.getType().equalsIgnoreCase(context.getString(R.string.enhancement))){
+            if (ticket.getType().equals(Type.ENHANCEMENT)){
                 ticketImageView.setImageResource(R.drawable.ic_enhancement);
             }
             else {
@@ -71,6 +75,42 @@ public class ToDoAdapter extends ListAdapter<Ticket, ToDoAdapter.ViewHolder> {
 
             ((TextView)itemView.findViewById(R.id.todoTitleTextView)).setText(ticket.getTitle());
             ((TextView)itemView.findViewById(R.id.todoDescTextView)).setText(ticket.getDescription());
+        }
+
+        private void initPrivileges(){
+            if (!LoginData.IS_ADMIN){
+                itemView.findViewById(R.id.deleteTicketButton).setVisibility(View.GONE);
+            }
+        }
+
+        @RequiresApi(api = Build.VERSION_CODES.N)
+        private void initListeners(View view, Consumer<TicketCallbackInfo> onItemClicked){
+            itemView.setOnClickListener(click -> {
+                if (getBindingAdapterPosition() != RecyclerView.NO_POSITION) {
+                    TicketCallbackInfo info = new TicketCallbackInfo();
+                    info.setPosition(getBindingAdapterPosition());
+                    info.setAction(TicketAction.OPEN_DETAILS);
+                    onItemClicked.accept(info);
+                }
+            });
+
+            view.findViewById(R.id.deleteTicketButton).setOnClickListener(click -> {
+                if (getBindingAdapterPosition() != RecyclerView.NO_POSITION) {
+                    TicketCallbackInfo info = new TicketCallbackInfo();
+                    info.setPosition(getBindingAdapterPosition());
+                    info.setAction(TicketAction.DELETE);
+                    onItemClicked.accept(info);
+                }
+            });
+
+            view.findViewById(R.id.moveToProgressButton).setOnClickListener(click -> {
+                if (getBindingAdapterPosition() != RecyclerView.NO_POSITION) {
+                    TicketCallbackInfo info = new TicketCallbackInfo();
+                    info.setPosition(getBindingAdapterPosition());
+                    info.setAction(TicketAction.MOVE_TO_PROGRESS);
+                    onItemClicked.accept(info);
+                }
+            });
         }
     }
 }
