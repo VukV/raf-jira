@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 import rs.raf.projekat1.vuk_vukovic_rn9420.R;
+import rs.raf.projekat1.vuk_vukovic_rn9420.model.State;
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.Ticket;
 import rs.raf.projekat1.vuk_vukovic_rn9420.model.Type;
 
@@ -45,6 +46,7 @@ public class ToDoViewModel extends ViewModel {
     public void addTicket(Ticket ticket){
         counter++;
         ticket.setId(counter);
+        ticket.setState(State.TODO);
 
         ticketList.add(ticket);
         ArrayList<Ticket> listToSubmit = new ArrayList<>(ticketList);

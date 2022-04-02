@@ -118,7 +118,7 @@ public class TicketDetailsFragment extends Fragment {
         if (!LoginData.IS_ADMIN){
             openEditButton.setVisibility(View.INVISIBLE);
         }
-        else if(!(ticket.getState().equals(State.TODO) || ticket.getState().equals(State.IN_PROGRESS))){
+        if(ticket.getState().equals(State.DONE)){
             openEditButton.setVisibility(View.INVISIBLE);
         }
     }

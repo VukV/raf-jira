@@ -90,7 +90,7 @@ public class InProgressFragment extends Fragment {
             }
             else if(ticketInfo.getAction().equals(TicketAction.MOVE_TO_DONE)){
                 inProgressViewModel.removeTicket(ticketInfo.getTicket());
-                //TODO ADD TO DONE
+                doneViewModel.addTicket(ticketInfo.getTicket());
             }
             else {
                 inProgressViewModel.removeTicket(ticketInfo.getTicket());
