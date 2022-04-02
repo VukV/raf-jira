@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -108,6 +109,14 @@ public class TicketDetailsFragment extends Fragment {
             //toDoViewModel.updateLoggedTime(ticket);
             ticket.setLoggedTime(ticket.getLoggedTime() + 1);
             loggedTimeButton.setText(String.valueOf(ticket.getLoggedTime()));
+        });
+
+        loggedTimeButton.setOnLongClickListener(click -> {
+            if(ticket.getLoggedTime() > 0){
+                ticket.setLoggedTime(ticket.getLoggedTime() - 1);
+                loggedTimeButton.setText(String.valueOf(ticket.getLoggedTime()));
+            }
+            return true;
         });
 
         openEditButton.setOnClickListener(click -> {
