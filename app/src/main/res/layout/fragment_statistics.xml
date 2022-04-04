@@ -33,7 +33,8 @@
         <!-- to-do -->
         <TextView
             android:text="@string/todo"
-            style="@style/RedTitleStyle">
+            style="@style/RedTitleStyle"
+            android:width="200dp">
         </TextView>
         <TextView
             android:id="@+id/todoTotal"
