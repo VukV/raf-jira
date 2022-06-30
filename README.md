@@ -6,4 +6,4 @@ The goal of the project was to learn and understand basics of Android developmen
 
 The idea of the application is to be a simple task tracker for developers, where they can monitor their bugs and enhancements.
 
-![App Example](app/screenshots/screenshot.png?raw=true "Title")
+![App Example](app/screenshots/screenshots.png?raw=true "Title")
